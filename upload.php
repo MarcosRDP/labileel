@@ -14,6 +14,9 @@
     $video = $_SESSION['num_video'];
     $video_id = $_SESSION['video_id'];
 
+    unset($_SESSION['num_video']);
+    unset($_SESSION['video_id']);
+
     $usuario = new Usuario;
     $usuario->conn = $conn;
     $usuario = $usuario->buscar($cpf);
@@ -24,6 +27,6 @@
     $sql = "UPDATE dataset.tb_envio
             SET caminho_envio = '$caminho',
                 status = $status
-            WHERE id_usuario = {$usuario->id} AND id_video = {$video->id}";
+            WHERE id_usuario = {$usuario->id} AND id_video = {$video_id}";
     mysqli_query($conn, $sql);
 ?>

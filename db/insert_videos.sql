@@ -35,8 +35,8 @@ BEGIN
                 caminho_legenda) 
             VALUES (m, v,
                     concat('vídeo ', v, ' do módulo ', m), 
-                    concat('../../grupos/grupo', m, '/', v, '.mp4'), 
-                    concat('../legendas/grupo', m, '/', v, '.vtt'));
+                    concat('/videos/grupo', m, '/', v, '.mp4'), 
+                    concat('/legendas/grupo', m, '/', v, '.vtt'));
 		END WHILE;
 	END WHILE;
 END;$$
@@ -62,8 +62,8 @@ BEGIN
                 caminho_legenda) 
             VALUES (m, v,
                     concat('vídeo ', v, ' do módulo ', m), 
-                    concat('../../grupos/grupo', m, '/', v, '.mp4'), 
-                    concat('../legendas/grupo', m, '/', v, '.vtt'));
+                    concat('/videos/grupo', m, '/', v, '.mp4'), 
+                    concat('/legendas/grupo', m, '/', v, '.vtt'));
 		END WHILE;
 	END WHILE;
 END;$$
@@ -89,8 +89,8 @@ BEGIN
                 caminho_legenda) 
             VALUES (m, v,
                     concat('vídeo ', v, ' do módulo ', m), 
-                    concat('../../grupos/grupo', m, '/', v, '.mp4'), 
-                    concat('../legendas/grupo', m, '/', v, '.vtt'));
+                    concat('/videos/grupo', m, '/', v, '.mp4'), 
+                    concat('/legendas/grupo', m, '/', v, '.vtt'));
 		END WHILE;
 	END WHILE;
 END;$$

@@ -25,6 +25,7 @@
 		
 			$proximo_modulo = $modulo->proximo_modulo($usuario);
 			if ($proximo_modulo->id == null) {
+				// não tem proximo modulo = ja fez todos
 				return 'Location: terminou.php';
 			} else {
 				return 'Location: ../gravacao/';

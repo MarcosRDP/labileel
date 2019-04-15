@@ -1,5 +1,5 @@
 <?php
-	header("Content-Type:text/plain");
+	header("Content-Type:text/json");
 	
 	require_once "../modelo/Usuario.php";
 	require_once "../modelo/Video.php";
@@ -14,7 +14,6 @@
 	
 	if (isset($_SESSION['video_id'])) {
 		$resultado = $video->buscar($_SESSION['video_id']);
-	
 	} else {
 		$usuario = new Usuario;
 		$usuario->conn = $conn;
@@ -22,6 +21,9 @@
 	
 		$resultado = $video->video_atual($usuario);
 		$resultado->conn = null;
+
+		$_SESSION["video_id"] = $resultado->id;
+		$_SESSION["num_video"] = $resultado->num_video;
 	}
 	
 	echo json_encode($resultado, JSON_PRETTY_PRINT);

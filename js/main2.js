@@ -123,15 +123,17 @@ function play() {
 }
 
 //Função que faz o download do vídeo para o servidor
-function download() {
+function upload() {
     var blob = new Blob(recordedBlobs, {type: 'video/webm'}); //Cria uma váriavel do tipo blob para armazenar o vídeo gravado
     form = new FormData(), //Cria um form para armazenar o vídeo
     request = new XMLHttpRequest(); //Cria uma requisição
-    form.append("blob",blob,"teste.webm"); //Armazena o vídeo no form
-    request.open(
-                "POST",
-                "https://labvirtual.ileel.ufu.br/labileel/upload.php",
-                true
-                ); //Envia para o arquivo upload.php o vídeo
-    request.send(form); //Execulta o upload.php
+    form.append("blob",blob,"video.webm"); //Armazena o vídeo no form
+    
+    return $.ajax({
+        url: '/upload.php',
+        data: form,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+    });
 }

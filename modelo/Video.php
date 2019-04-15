@@ -1,8 +1,8 @@
 <?php
 
 	class Video {
-		const ENVIO_STATUS_INICIADO = 1;
-		const ENVIO_STATUS_CONCLUIDO = 2;
+		public const ENVIO_STATUS_INICIADO = 1;
+		public const ENVIO_STATUS_CONCLUIDO = 2;
 	
 		public $id;
 		public $id_modulo;
@@ -24,6 +24,7 @@
 			if (sizeof($videos_nao_assistidos) > 0) {
 				$idx = mt_rand(0, sizeof($videos_nao_assistidos) - 1);
 				$video = $videos_nao_assistidos[$idx];
+				
 				$this->salvar_envio($usuario, $video);
 	
 				return $video;
@@ -37,8 +38,8 @@
 					FROM tb_video v
 						INNER JOIN tb_envio e on v.id = e.id_video
 						INNER JOIN tb_usuario u on e.id_usuario = u.id
-					WHERE e.status = " . ENVIO_STATUS_INICIADO . "
-						u.cpf = {$usuario->cpf}";
+					WHERE e.status = " . Video::ENVIO_STATUS_INICIADO . "
+						AND u.cpf = {$usuario->cpf}";
 			$res = mysqli_query($this->conn, $sql);
 	
 			$vid = new Video;
@@ -124,22 +125,22 @@
 		}
 	
 		function contarVideosFeitos($id) {
-			$sql = "SELECT COUNT(*)
+			$sql = "SELECT COUNT(*) AS QTD
 					FROM dataset.tb_envio
-					WHERE id = {$id};";
-	
+					WHERE id_usuario = {$id}
+						AND status = ". Video::ENVIO_STATUS_CONCLUIDO .";";
+			
 			$res = mysqli_query($this->conn, $sql);
 	
 			if ($row = $res->fetch_assoc()){
-				$total = $row['COUNT(*)'];
+				$total = $row['QTD'];
 			}
 			return $total;
 		}
 	
-		function salvar_envio($video, $usuario) {
+		function salvar_envio($usuario, $video) {
 			$sql = "INSERT INTO dataset.tb_envio(id_video, id_usuario, status)
-					VALUES('$video->id','$usuario->id', " . ENVIO_STATUS_INICIADO . ");";
-			echo $sql;
+					VALUES('$video->id','$usuario->id', " . Video::ENVIO_STATUS_INICIADO . ");";
 			$resultado = mysqli_query($this->conn, $sql);
 			return $resultado;
 		}

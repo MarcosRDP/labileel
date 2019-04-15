@@ -28,7 +28,13 @@ CREATE TABLE IF NOT EXISTS dataset.tb_modulo_usuario  (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_modulo INT,
     id_usuario INT,
-    `status` INT
+    `status` INT,
+    
+    CONSTRAINT fk_mu_modulo FOREIGN KEY(id_modulo)
+        REFERENCES dataset.tb_modulo(id),
+        
+	CONSTRAINT fk_mu_usuario FOREIGN KEY(id_usuario)
+        REFERENCES dataset.tb_usuario(id)
 );
 
 create table IF NOT EXISTS dataset.tb_video(
@@ -52,7 +58,7 @@ create table IF NOT EXISTS dataset.tb_envio(
     `status` INT,
     
     CONSTRAINT fk_envio_video FOREIGN KEY(id_video)
-        REFERENCES dataset.tb_modulo(id),
+        REFERENCES dataset.tb_video(id),
     
     CONSTRAINT fk_envio_usuario FOREIGN KEY(id_usuario)
         REFERENCES dataset.tb_usuario(id)

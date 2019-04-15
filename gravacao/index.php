@@ -6,7 +6,7 @@ require_once '../modelo/Video.php';
 require_once '../modelo/Modulo.php';
 
 // Sessão
-//session_start();
+session_start();
 $usuario = new Usuario;
 $usuario->conn = $conn;
 $usuario = $usuario->buscar($_SESSION['cpf']);
@@ -25,7 +25,7 @@ $_SESSION["video_id"] = $video_atual->id;
 $_SESSION["num_video"] = $video_atual->num_video;
 
 $total = $video->contarVideos();
-$totalFeito = $video->contarVideosFeitos(intval($_SESSION['cpf']));
+$totalFeito = $video->contarVideosFeitos($usuario->id);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -95,13 +95,13 @@ $totalFeito = $video->contarVideosFeitos(intval($_SESSION['cpf']));
                         <div class=borda>
                             Total: <?php echo $total; ?>
                             <br />
-                            Enviados: <?php echo $totalFeito; ?>
+                            Enviados: <span id="contador"> <?php echo $totalFeito; ?> </span>
                         </div>
                     </div>
 
                     <div class="col-md-4">
-                        <video id="video_modelo" width="426" height="290" src="../../grupos/grupo1/1.mp4" controls >
-                            <track id="legenda" label="English" kind="subtitles" src="../legendas/grupo1/1.vtt" srclang="en" default>
+                        <video id="video_modelo" width="426" height="290" src="<?php echo $video_atual->caminho_video; ?>" controls >
+                            <track id="legenda" label="English" kind="subtitles" src="<?php echo $video_atual->caminho_legenda; ?>" srclang="en" default>
                         </video>
                     </div>
                     <div class="col-md-1"></div>
