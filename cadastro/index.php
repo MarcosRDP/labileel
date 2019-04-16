@@ -35,9 +35,15 @@
         if (checkBoxbr.checked == true && checkBoxother.checked == false){
           document.getElementById("testandobr").style.visibility = "visible";
           document.getElementById("testandoother").style.visibility = "hidden";
+
+          document.getElementById("inputAddresscpf").required = true; 
+          document.getElementById("inputAddressid").required = false; 
         } else {
           document.getElementById("testandobr").style.visibility = "hidden";
           document.getElementById("testandoother").style.visibility = "visible";
+
+          document.getElementById("inputAddresscpf").required = false; 
+          document.getElementById("inputAddressid").required = true; 
         }
       }
     </script>
@@ -96,10 +102,10 @@
           </label>
         </div>
         <div class="form-group col-md-3" id="testandobr">
-          <input name="cpf" type="text" class="form-control" id="inputAddress"  placeholder="CPF">
+          <input name="cpf" type="text" class="form-control" id="inputAddresscpf" pattern=".{11,11}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="CPF">
         </div>
         <div class="form-group col-md-3" id="testandoother">
-          <input name="ID" type="text" class="form-control" id="inputAddress"  placeholder="ID">
+          <input name="ID" type="text" class="form-control" id="inputAddressid" placeholder="ID">
         </div>
 
         <div class="form-row">
