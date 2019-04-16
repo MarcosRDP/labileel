@@ -36,11 +36,15 @@
           document.getElementById("testandobr").style.visibility = "visible";
           document.getElementById("testandoother").style.visibility = "hidden";
 
+          document.getElementById('inputAddressid').value = '';
+
           document.getElementById("inputAddresscpf").required = true; 
           document.getElementById("inputAddressid").required = false; 
         } else {
           document.getElementById("testandobr").style.visibility = "hidden";
           document.getElementById("testandoother").style.visibility = "visible";
+
+          document.getElementById('inputAddresscpf').value = '';
 
           document.getElementById("inputAddresscpf").required = false; 
           document.getElementById("inputAddressid").required = true; 
