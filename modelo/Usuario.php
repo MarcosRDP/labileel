@@ -19,10 +19,16 @@
         public $conn;
     
         public function save() {
+            if($this->estrangeiro == 1){
+                $chave = 'true';
+            } else {
+                $chave = 'false';
+            }
+
             /*$sql = "INSERT INTO dataset.tb_usuario(nome, sobrenome, cpf, senha, email, dt_nascimento, sexo, nacionalidade, cidade, estado, estrangeiro)
                     VALUES('$this->nome','$this->sobrenome','$this->cpf','$this->senha','$this->email','$this->dt_nascimento','$this->sexo','$this->nacionalidade','$this->cidade','$this->estado', '$this->estrangeiro');";*/
             $sql = "INSERT INTO dataset.tb_usuario(nome, cpf, senha, email, dt_nascimento, sexo, nacionalidade, cidade, estado, estrangeiro)
-                    VALUES('$this->nome','$this->cpf','$this->senha','$this->email','$this->dt_nascimento','$this->sexo','$this->nacionalidade','$this->cidade','$this->estado', '$this->estrangeiro');";
+                    VALUES('$this->nome','$this->cpf','$this->senha','$this->email','$this->dt_nascimento','$this->sexo','$this->nacionalidade','$this->cidade','$this->estado', $chave);";
             $resultado = mysqli_query($this->conn, $sql);
             return $resultado;
         }

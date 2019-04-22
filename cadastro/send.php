@@ -57,7 +57,6 @@
            			$idade = $idade + 1;
         	}
     	}
-
     	//verificar se o cpf ja existe
     	$sql1 = " select * from dataset.tb_usuario where cpf = '$cpf' ";
     	$resultado = mysqli_query($conn, $sql1);
@@ -66,9 +65,9 @@
     	}
     	else{
     	    //verificar se o e-mail ja existe
-    		$sql1 = " select * from dataset.tb_usuario where email = '$email' ";
+    		$sql1 = " select * from dataset.tb_usuario where email = '$usr->email' ";
     		$resultado = mysqli_query($conn, $sql1);
-    		if(mysqli_num_rows($resultado) > 0){
+			if(mysqli_num_rows($resultado) > 0){
 				echo 'Esse Email já está em uso, por favor utilize outro!';
 			}
 			else{
@@ -89,6 +88,6 @@
 					}
 				}
 			}
-		}
+		} 
 	}
 ?>
