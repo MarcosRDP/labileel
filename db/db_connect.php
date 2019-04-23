@@ -2,8 +2,8 @@
 
 // Conexão com banco de dados
 $servername = "localhost";
-$username = "labileel";
-$password = "oQpEspOAYMtCcHKH";
+$username = "sudo";
+$password = "#NeoLords2";
 $dbname = "dataset";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
