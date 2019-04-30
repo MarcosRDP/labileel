@@ -36,6 +36,7 @@ $totalFeito = $video->contarVideosFeitos($usuario->id);
         <meta name="mobile-web-app-capable" content="yes" />
 
         <base target="_blank" />
+        <link rel="stylesheet" type="text/css" href="gravacao.js"/>
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../css/bootstrap.css" />
@@ -119,7 +120,7 @@ $totalFeito = $video->contarVideosFeitos($usuario->id);
                         <video id="recorded" width="255" height="144" controls></video>
                         <div class="btn-group btn-group-justified d-flex">
                             <button id="play" class="btn btn-primary" type="button">Checar Gravação</button>
-                            <button id="btn_enviar" class="btn btn-primary ml-auto" type="button">Enviar</button>
+                            <button onclick="next()" id="btn_enviar" class="btn btn-primary ml-auto" type="button">Enviar</button>
                         </div>
                         <button id="download" class="btn btn-outline-primary" type="submit" disabled>
                             <script type="text/javascript">

@@ -1,5 +1,5 @@
 $(function() {
-
+ 
     let next = function next() {
         upload()
             .done(carregarVideo)
